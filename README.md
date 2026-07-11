@@ -23,7 +23,7 @@ The files in this repository are structured as follows:
 Standard attention mechanisms require storing an $O(n^2)$ attention matrix in memory, which quickly becomes a bottleneck for long sequences.
 
 ### Approach
-1.  **Chunked Computation:** Processes query-key-value interactions in configurable chunks of size $O(\text{chunk\_size})$, reducing overall memory complexity to $O(n \times \text{chunk\_size})$.
+1.  **Chunked Computation:** Processes query-key-value interactions in configurable chunks of size $C$ (`chunk_size`), reducing overall memory complexity to $O(n \times C)$.
 2.  **Online Softmax:** Normalizes similarity scores on-the-fly using a running maximum and exponential sum, ensuring numerical stability without allocating the full attention grid.
 3.  **Gradient Checkpointing:** Recomputes activations dynamically during the backward pass instead of saving intermediate matrices, drastically lowering training memory requirements at a negligible cost of recomputation.
 
